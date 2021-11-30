@@ -1,0 +1,6 @@
+---
+# tasks file for chkp-api-session-mgmt
+- import_tasks: chkp-api-login.yml
+
+
+
