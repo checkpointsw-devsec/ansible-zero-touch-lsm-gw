@@ -1,0 +1,24 @@
+---
+- name: Build inventory
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Create a dynamic inventory
+      add_host:
+        hostname: "{{ item.hostname }}"
+        ansible_host: "{{ item.ansible_host }}"
+        groups: "{{item.groups}}"
+      with_items:
+      - { hostname: zero-touch, ansible_host: zerotouch.checkpoint.com, groups: checkpoint }
+  tags: [ "unclaim-gaia-gateway" ]
+
+- name:  Runt add Gaia Instance and run FTW
+  hosts: zero-touch
+  connection: local
+  gather_facts: no
+  vars_files:
+  - ./vars/zero-touch-lsm-vars.creds.yml
+  roles:
+  - role: ./chkp-api-zero-touch
+    delegate_to: localhost

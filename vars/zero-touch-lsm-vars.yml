@@ -1,0 +1,38 @@
+---
+
+# Variables file for zero_touch role
+# Zero-touch credentials, server and base URL
+# Variable                    : Value                                # Example values for variable
+zero_touch_user               : PLEASE ENTER USERCENTER USERNAME     # john.doe@local.local
+zero_touch_password           : PLEASE ENTER USERCENTER PASSWORD     # my-secrect-usercenter-password
+zero_touch_server             : "{{ansible_host}}"                   # ansible_host should be set in the playbook to: zerotouch.checkpoint.com which is the API server for ZT
+zero_touch_api_url            : /ZeroTouch/web_api/v2                # /ZeroTouch/web_api/v2
+zt_validate_cert              : true                                 # true or false
+
+# Variables used to retrive and set objects in zero-touch
+zt_gateway_mac                : PLEASE ENTER APPLIANCE MAC ADDRESS   # XX:XX:XX:XX:XX:XX
+zt_object_name                : PLEASE ENETER APPLIANCE NAME         # gwXXXXXXXX
+
+# Vars for adding template in zero-touch
+zt_account_name               : PLEASE ENTER USERCENTER ACCOUTN NAME # My UC Name | The UserCenter Account Name
+zt_template_name              : PLESE ENTER THE TEMPLATE NAME        # ro-template
+zt_gaia_password              : PLEASE ENTER ADMIN PASSWORD          # my-very-secret-gaia-admin-password
+zt_activate_with_url          : true                                 # true or false
+zt_gw_sic                     : PLEASE ENTER A SIC KEY               # my-very-secret-otp
+zt_id_key                     : PLEASE ENTER A ID KEY                # my-zt-id-key-vpn123
+zt_gaia_version               : PLEASE ENTER VERSION ID NUMBER       # 4                  | ID number of Gaia version from: show-all-gaia-versions-ids
+zt_force_reimage              : false                                # true or false      | If true, this forces a re-image of the machine even if the selected Gaia image version is already installed
+zt_cluster_member             : false                                # true or false      | If true, the gateway is a member of a cluster
+zt_under_construction         : true                                 # true or false      | A true value prevents downloads to the gateway until the final configuration and deployment decisions are complete
+zt_config_ipv6                : false                                # true or flase      | Must be true to set ipv6 configuration
+zt_upload_info                : true                                 # true or false      | If true, improves product experience by sending data to Check Point
+zt_download_info              : true                                 # true or false      | If true, automatically downloads Blade Contracts and other important data (highly recommended)
+zt_ime_zone                   : Europe / Stockholm                   # Europe / Stockholm | Time zone for the gateway
+zt_comments                   : PLEASE ENTER A TEMPLATE DESCRIPTION  # my ro template     | Comments that should be added to the template
+user_script                   : PLEASE ENTER CLISH COMMANDS          # set static-route 192.0.2.100 nexthop gateway address 192.0.2.155 on\nset static-route 192.0.3.0/24 nexthop blackhole\n
+zt_dns_server1                : PLEASE ENTER PRIMARY DNS             # 8.8.8.8            | The primary DNS server
+zt_dns_server2                : PLEASE ENTER SECONDARY DNS           # 1.1.1.1            | The secondary DNS server
+zt_dns_server3                : PLEASE ENTER TERTIARY DNS            # 10.10.10.10        | The tertiary DNS server
+zt_mgmt_eth_ip_address_ipv4   : PLEASE ENTER MANAGEMENT INT IP       # 192.168.10.20      | The Management interface IPv4 address
+zt_mgmt_eth_subnet_mask_ipv4  : PLEASE ENTER MANAGEMENT INT SUBNET   # 255.255.255.0      | The Management interface IPv4 subnet mask
+zt_default_gateway_ipv4       : PLEASE ENTER DEAFAULT GATEWAY        # 192.168.233.254    | The Default gateway of the appliace

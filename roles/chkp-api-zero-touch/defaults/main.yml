@@ -19,6 +19,7 @@ zt_gateway_mac: 00:1C:7F:3A:5A:B9
 zt_object_name: gw7f3a5ab9
 
 # Vars for adding template in zero-touch
+zt_account_name: my usercernter account
 zt_template_name: ansible-cluster
 zt_gaia_password: vpn123
 zt_activate_with_url: true
