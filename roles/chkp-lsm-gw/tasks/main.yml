@@ -1,0 +1,4 @@
+---
+- name: Update LSM gateway
+  include_tasks: cp-mgmt-lsm-gateway.yml
+  loop: "{{  cp_mgmt_lsm_gateway  }}"

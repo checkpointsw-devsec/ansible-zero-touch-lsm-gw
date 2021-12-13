@@ -1,0 +1,15 @@
+---
+- name: Add, change or delete LSM Small Office Gateway {{ item.name }}
+  check_point.mgmt.cp_mgmt_lsm_gateway:
+    name: "{{ item.name }}"
+    provisioning_settings:
+      provisioning_profile: "{{ item.prv_profile }}"
+    provisioning_state: using-profile
+    security_profile: "{{ item.lsm_profile }}"
+    sic:
+      # When IP address is provided- initiate trusted communication immediately using this IP address.
+      #ip_address: 1.2.3.4
+      one_time_password: "{{ item.sickey }}"
+    state: "{{ item.state }}"
+    auto_publish_session: true
+  #notify: Publish handler
