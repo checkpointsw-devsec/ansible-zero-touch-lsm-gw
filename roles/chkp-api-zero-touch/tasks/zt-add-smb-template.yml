@@ -1,0 +1,58 @@
+---
+- name: "Check if smb template is defined"
+  uri:
+     url: "https://{{ api_server }}{{ api_base_url }}/show-all-templates"
+     validate_certs: "{{ api_validate_cert }}"
+     method: POST
+     headers :
+       X-chkp-sid : "{{ sid }}"
+     body_format: json
+     body: 
+           '{ 
+              "account-ids" : [ "{{ datasource_zt_account_id }}" ] 
+            }'
+  register: datasource_smb_template
+
+- set_fact:
+     datasource_zt_smb_template_id: "{{ datasource_smb_template.json | json_query(jmesquery) }}"
+  vars:
+    jmesquery: '[? "name"==`{{zt_template_name}}`]."template-id"| [0]'
+
+- debug:
+    msg="{{ datasource_zt_smb_template_id }}"
+  when: datasource_zt_smb_template_id != ""
+
+- name: "Add smb template {{zt_template_name}}"
+  uri:
+     url: "https://{{ api_server }}{{ api_base_url }}/add-template"
+     validate_certs: "{{ api_validate_cert }}"
+     method: POST
+     headers :
+       X-chkp-sid : "{{ sid }}"
+     body_format: json
+     body: 
+           '{ 
+              "account-id": "{{ datasource_zt_account_id }}",
+              "name": "{{zt_template_name}}",
+              "time-zone": "{{zt_time_zone}}",
+              "wireless-country": "{{zt_wireless_country}}", 
+              "admin-password": "{{zt_gaia_password}}",
+              "admin-access": "{{zt_smb_admin_access}}",
+              "limit-source-ip-mode": "{{zt_limit_source_ip_mode}}",
+
+              "comments": "{{zt_comments}}",
+              "user-script": "{{user_script}}",
+
+            }'
+  register: datasource_smb_new_template
+  when: datasource_zt_smb_template_id == ""
+
+- set_fact:
+     datasource_zt_smb_template_id: "{{ datasource_smb_new_template.json | json_query(jmesquery) }}"
+  vars:
+    jmesquery: '"template-id"'
+  when: datasource_zt_smb_template_id == ""
+
+- debug:
+    msg="{{ datasource_zt_smb_template_id }}"
+  when: datasource_zt_smb_template_id != ""

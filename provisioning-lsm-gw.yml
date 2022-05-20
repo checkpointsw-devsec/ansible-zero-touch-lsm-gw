@@ -1,9 +1,8 @@
 ---
 ## Run with extra vars for example: 
-# ansible-playbook provisioning-lsm-gw.yml -e "dms_ip=192.168.233.11 mgmt_server_name=nordics-dms11 ansible_checkpoint_domain=nordics"
+# ansible-playbook provisioning-lsm-gw.yml -e "dms_ip=192.168.233.60"
 ##Required vars
 # dms_ip=[DMS / SMS IP]
-# mgmt_server_name=[DMS / SMS objectname]
 ## Optional var
 # ansible_checkpoint_domain=[domain name]
 - name: Build inventory
@@ -18,7 +17,7 @@
         groups: chkp
         vm_name: "{{ item.hostname }}"
       with_items:
-      - { hostname: vnf01 }
+      - { hostname: vnf11 }
 #      - { hostname: vnf02 }
 #      - { hostname: vnf03 }
 #      - { hostname: vnf04 }

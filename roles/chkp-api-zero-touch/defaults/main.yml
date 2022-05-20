@@ -32,7 +32,7 @@ zt_under_construction: true
 zt_config_ipv6: false
 zt_upload_info: true
 zt_download_info: true
-zt_ime_zone: Europe / Stockholm
+zt_time_zone: Europe / Stockholm
 zt_comments: ZT template for unattended Remote Office cluster deployment
 user_script: set static-route 192.0.2.100 nexthop gateway address 192.0.2.155 on\nset static-route 192.0.3.0/24 nexthop blackhole\n
 zt_dns_server1: 8.8.8.8
@@ -41,3 +41,9 @@ zt_dns_server3: 192.168.233.233
 zt_mgmt_eth_ip_address_ipv4: 192.168.233.101
 zt_mgmt_eth_subnet_mask_ipv4: 255.255.255.0
 zt_default_gateway_ipv4: 192.168.233.254
+
+Vars for Zero Touch SMB template
+zt_time_zone: GMT+01:00(Amsterdam/Berlin/Bern/Rome/Stockholm/Vienna)
+zt_wireless_country: SE 
+zt_smb_admin_access:  # Networks and IP addresses from which an administrator can access the gateway For example: "10.2.3.56","192.1.1.2,10.1.1.7/255.255.255.0" An empty string means “any IP address”
+zt_limit_source_ip_mode: LIMIT_SRC_IP_MODE.NO_LIMIT # Source IP mode. If admin-access is an empty string, use: "LIMIT_SRC_IP_MODE.NO_LIMIT". If admin-access is an IPv4 address, or a network and a subnet, use: "LIMIT_SRC_IP_MODE.ALL_INTERFACES"

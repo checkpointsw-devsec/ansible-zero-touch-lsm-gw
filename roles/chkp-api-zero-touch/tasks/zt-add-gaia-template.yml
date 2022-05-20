@@ -45,7 +45,7 @@
               "config-ipv6": {{zt_config_ipv6}},
               "upload-info": {{zt_upload_info}},
               "download-info": {{zt_download_info}},
-              "time-zone": "{{zt_ime_zone}}",
+              "time-zone": "{{zt_time_zone}}",
               "comments": "{{zt_comments}}",
               "user-script": "{{user_script}}",
               "dns-server1": "{{zt_dns_server1}}",
